@@ -3,23 +3,21 @@ import 'screens/ComparePlacesScreen.dart';
 import 'screens/HomeScreen.dart';
 import 'screens/PlacesScreen.dart';
 
-void main() => runApp(MaterialApp(
-    home: MainScreen(),
-    darkTheme: ThemeData(
-        brightness: Brightness.dark,
-    ),
-    theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.cyan,
-    ),
-    title: 'Welcome to Flutter',
-));
+void main() => runApp(MainScreen());
 
 class MainScreen extends StatelessWidget {
     MainScreen({Key key}) : super(key: key);
 
     Widget build(BuildContext context) {
         return MaterialApp(
+            theme: ThemeData(
+                brightness: Brightness.dark,
+                primarySwatch: Colors.blue,
+            ),
+            darkTheme: ThemeData(
+                brightness: Brightness.dark,
+                primarySwatch: Colors.blue
+            ),
             home: DefaultTabController(
                 length: 3,
                 child: Scaffold(
