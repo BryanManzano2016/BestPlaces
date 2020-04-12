@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-    // HomeScreen({Key key}) : super(key: key);
+
+    HomeScreen({Key key}) : super(key: key) {
+        print("hola...");
+    }
+
     @override
     Widget build(BuildContext context) {
         return Scaffold(

@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/commun/Auxiliar.dart';
 
 class ScreenRAnkingPlaces extends StatelessWidget {
     final String placesby;
@@ -8,11 +9,7 @@ class ScreenRAnkingPlaces extends StatelessWidget {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                leading: IconButton(icon: Icon(Icons.arrow_back),
-                        onPressed: (){
-                            Navigator.pop(context);
-                        }
-                ),
+                leading: iconButtonBack(context),
                 title: Text("Ranking by ${this.placesby}"),
             ),
             body: Center(child: Text(this.placesby)),
@@ -21,7 +18,6 @@ class ScreenRAnkingPlaces extends StatelessWidget {
                 child: Icon(Icons.search),
                 onPressed: null,
             ),
-
         );
     }
 }

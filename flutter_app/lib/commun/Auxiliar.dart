@@ -14,3 +14,20 @@ Widget imageWithRadious(String pathImage, double radious){
         child: Image.asset('assets/' + pathImage),
     );
 }
+void goToScreenLess(BuildContext context, StatelessWidget screen){
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => screen),
+    );
+}
+void goToScreenFul(BuildContext context, StatefulWidget screen){
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => screen),
+    );
+}
+IconButton iconButtonBack(BuildContext context){
+    return IconButton(icon: Icon(Icons.arrow_back),
+        onPressed: (){
+            Navigator.pop(context);
+        }
+    );
+}
