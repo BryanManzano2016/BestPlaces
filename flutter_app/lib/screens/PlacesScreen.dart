@@ -33,7 +33,7 @@ class PlacesScreen extends StatelessWidget {
                             FlatButton(
                                 onPressed: () {
                                     goToScreenLess(context,
-                                        ScreenRAnkingPlaces(placesby: 'countries'));
+                                        ScreenRankingPlaces(placesby: 'countries'));
                                 },
                                 child: imageWithRadious("countries.jpg", 16)),
                             Container(
@@ -63,7 +63,7 @@ class PlacesScreen extends StatelessWidget {
                             FlatButton(
                                 onPressed: () {
                                     goToScreenLess(context,
-                                        ScreenRAnkingPlaces(placesby: 'cities'));
+                                        ScreenRankingPlaces(placesby: 'cities'));
                                 },
                                 child: imageWithRadious('cities.jpg', 16)),
                             Container(
