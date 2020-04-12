@@ -42,7 +42,7 @@ class MainScreen extends StatelessWidget {
                                 IconButton(
                                     icon: Icon(Icons.account_box),
                                     onPressed: () {
-                                        goToScreenLess(context, LoginScreen());
+                                        goToScreenFul(context, LoginScreen());
                                     },
                                 )
                             ],
@@ -67,4 +67,6 @@ class MainScreen extends StatelessWidget {
         Tab(icon: Icon(Icons.compare)),
     ];
 }
+
+
 

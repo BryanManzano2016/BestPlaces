@@ -32,10 +32,8 @@ class PlacesScreen extends StatelessWidget {
                         children: [
                             FlatButton(
                                 onPressed: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) =>
-                                            ScreenRAnkingPlaces(placesby: 'countries')),
-                                    );
+                                    goToScreenLess(context,
+                                        ScreenRAnkingPlaces(placesby: 'countries'));
                                 },
                                 child: imageWithRadious("countries.jpg", 16)),
                             Container(
@@ -55,7 +53,7 @@ class PlacesScreen extends StatelessWidget {
                             ),
                         ],
                     )),
-                Divider(),
+                Divider(color: Colors.white),
                 Container(
                     height: size['hg'] / 3,
                     child: Stack(
@@ -64,10 +62,8 @@ class PlacesScreen extends StatelessWidget {
                         children: [
                             FlatButton(
                                 onPressed: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) =>
-                                            ScreenRAnkingPlaces(placesby: 'vities')),
-                                    );
+                                    goToScreenLess(context,
+                                        ScreenRAnkingPlaces(placesby: 'cities'));
                                 },
                                 child: imageWithRadious('cities.jpg', 16)),
                             Container(
@@ -87,7 +83,8 @@ class PlacesScreen extends StatelessWidget {
                             ),
                         ],
                     )
-                )
+                ),
+                Divider(color: Colors.white),
             ],
         );
     }
