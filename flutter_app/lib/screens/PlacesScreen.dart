@@ -35,7 +35,8 @@ class PlacesScreen extends StatelessWidget {
                                     goToScreenLess(context,
                                         ScreenRankingPlaces(placesby: 'countries'));
                                 },
-                                child: imageWithRadious("countries.jpg", 16)),
+                                child: imageWithRadious("countries.jpg", 16)
+                            ),
                             Container(
                                 width: size['wd'] / 2,
                                 decoration: BoxDecoration(

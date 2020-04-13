@@ -14,6 +14,13 @@ Widget imageWithRadious(String pathImage, double radious){
         child: Image.asset('assets/images/' + pathImage),
     );
 }
+Widget iconByCountries(String pathImage){
+    return ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Image.asset('assets/countries/' + pathImage, width: 40, height: 40),
+    );
+}
+
 void goToScreenLess(BuildContext context, StatelessWidget screen){
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => screen),

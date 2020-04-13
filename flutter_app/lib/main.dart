@@ -30,6 +30,7 @@ class MainScreen extends StatelessWidget {
     Widget build(BuildContext context) {
         return SafeArea(
             child: DefaultTabController(
+                initialIndex: 0,
                 length: 2,
                 child: Scaffold(
                     appBar: PreferredSize(
