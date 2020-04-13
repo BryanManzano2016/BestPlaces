@@ -11,7 +11,7 @@ Map<String, double> sizeScreen(BuildContext context, double widthLess,
 Widget imageWithRadious(String pathImage, double radious){
     return ClipRRect(
         borderRadius: BorderRadius.circular(radious),
-        child: Image.asset('assets/' + pathImage),
+        child: Image.asset('assets/images/' + pathImage),
     );
 }
 void goToScreenLess(BuildContext context, StatelessWidget screen){

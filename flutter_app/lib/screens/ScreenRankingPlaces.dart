@@ -133,7 +133,7 @@ class RankingList extends StatelessWidget {
                     thumbnail: Container(
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: ExactAssetImage('assets/Ecuador.jpg'),
+                                image: ExactAssetImage('assets/images/Ecuador.png'),
                                 fit: BoxFit.fitHeight,
                             )
                         ),
@@ -146,7 +146,7 @@ class RankingList extends StatelessWidget {
                     thumbnail: Container(
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: ExactAssetImage('assets/Argentina.png'),
+                                image: ExactAssetImage('assets/images/Argentina.png'),
                                 fit: BoxFit.fitHeight,
                             )
 

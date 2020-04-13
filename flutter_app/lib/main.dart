@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterapp/commun/Auxiliar.dart';
 import 'package:flutterapp/screens/LoginScreen.dart';
-import 'screens/ComparePlacesScreen.dart';
 import 'screens/HomeScreen.dart';
 import 'screens/PlacesScreen.dart';
 
@@ -11,11 +10,14 @@ void main() {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
         .then((_) {
         runApp(MaterialApp(
+            /*
             theme: ThemeData(
                 brightness: Brightness.dark,
                 primarySwatch: Colors.blue,
             ),
             darkTheme: ThemeData(brightness: Brightness.dark, primarySwatch: Colors.blue),
+            */
+            debugShowCheckedModeBanner: false,
             home: MainScreen(),
         ));
     });
@@ -28,7 +30,7 @@ class MainScreen extends StatelessWidget {
     Widget build(BuildContext context) {
         return SafeArea(
             child: DefaultTabController(
-                length: 3,
+                length: 2,
                 child: Scaffold(
                     appBar: PreferredSize(
                         preferredSize: Size.fromHeight(80.0),
@@ -55,18 +57,16 @@ class MainScreen extends StatelessWidget {
             ),
         );
     }
-
     final List<Widget> _childrenTarBarView = [
         HomeScreen(),
         PlacesScreen(),
-        ComparePlacesScreen(),
     ];
     final List<Widget> _childrenTarBar = [
         Tab(icon: Icon(Icons.home)),
         Tab(icon: Icon(Icons.place)),
-        Tab(icon: Icon(Icons.compare)),
     ];
 }
+
 
 
 
