@@ -148,25 +148,6 @@ class _LoginScreenState extends State<LoginScreen> {
         );
     }
 
-    Widget _buildSignInWithText() {
-        return Column(
-            children: <Widget>[
-                Text(
-                    '- OR -',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                    ),
-                ),
-                SizedBox(height: 20.0),
-                Text(
-                    'Sign in with',
-                    style: kLabelStyle,
-                ),
-            ],
-        );
-    }
-
     Widget _buildSocialBtn(Function onTap, AssetImage logo) {
         return GestureDetector(
             onTap: onTap,

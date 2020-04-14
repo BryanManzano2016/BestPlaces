@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+enum Continent {
+    Africa,
+    Asia,
+    America,
+    Europa,
+    Oceania
+}
+
 final kHintTextStyle = TextStyle(
     color: Colors.white54,
     fontFamily: 'OpenSans',

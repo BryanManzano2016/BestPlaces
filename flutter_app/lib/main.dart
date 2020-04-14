@@ -10,11 +10,11 @@ void main() {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
         .then((_) {
         runApp(MaterialApp(
-            /*
             theme: ThemeData(
-                brightness: Brightness.dark,
+                brightness: Brightness.light,
                 primarySwatch: Colors.blue,
             ),
+            /*
             darkTheme: ThemeData(brightness: Brightness.dark, primarySwatch: Colors.blue),
             */
             debugShowCheckedModeBanner: false,
