@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/commun/Auxiliar.dart';
 
 class ScreenRankingPlaces extends StatelessWidget {
     final String placesby;
@@ -7,6 +8,12 @@ class ScreenRankingPlaces extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return SafeArea(child:Scaffold(
+            appBar: PreferredSize(
+            preferredSize: Size.fromHeight(40.0),
+            child: AppBar(
+                leading: iconButtonBack(context)
+            )
+        ),
             body:  RankingList(),
         ));
     }
@@ -100,7 +107,6 @@ class CustomList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                         AspectRatio(
-
                             aspectRatio: 1.2,
                             child: thumbnail,
                         ),

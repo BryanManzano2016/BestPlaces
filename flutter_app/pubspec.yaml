@@ -18,7 +18,6 @@ flutter:
   assets:
     - assets/images/
     - assets/countries/
-    - assets/icons/
 
   uses-material-design: true
   fonts:

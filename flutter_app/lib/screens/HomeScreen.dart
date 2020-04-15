@@ -40,18 +40,24 @@ class HomeScreen extends StatelessWidget {
         List<Widget> items = [];
         listFunc.forEach((item) {
             items.add(Expanded(
-                child: Container(
-                    padding: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Colors.black,
-                            width: 1,
+                child: GestureDetector(
+                    onTap: (){
+                        print('Go to screen for place ${item.name}');
+                    },
+                    child: Container(
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Colors.black,
+                                width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
                         ),
-                        borderRadius: BorderRadius.circular(16),
+                        child: placeColumn(item),
                     ),
-                    child: placeColumn(item),
                 ),
-            ));
+            ),
+            );
         });
         return items;
     }
