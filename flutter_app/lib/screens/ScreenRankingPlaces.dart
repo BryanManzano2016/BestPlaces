@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/commun/Auxiliar.dart';
+import 'package:flutterapp/commun/Constants.dart';
 
 class ScreenRankingPlaces extends StatelessWidget {
     final String placesby;
@@ -14,7 +15,7 @@ class ScreenRankingPlaces extends StatelessWidget {
                 leading: iconButtonBack(context)
             )
         ),
-            body:  RankingList(),
+            body: Container(decoration: gradientApp, child: RankingList()),
         ));
     }
 }

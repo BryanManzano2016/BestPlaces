@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutterapp/commun/Auxiliar.dart';
+import 'package:flutterapp/commun/Constants.dart';
 import 'package:flutterapp/models/City.dart';
 import 'package:flutterapp/models/Country.dart';
 import 'package:flutterapp/models/Place.dart';
@@ -14,11 +15,10 @@ class HomeScreen extends StatelessWidget {
     Widget build(BuildContext context) {
         size = sizeScreen(context, 8, 8);
         return SafeArea(
-            child: Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Scaffold(
-                    body: listComponents(context)
-                ),
+            child: Scaffold(
+                body: Container(
+                    decoration: gradientApp,
+                    child: listComponents(context))
             )
         );
     }
@@ -28,9 +28,13 @@ class HomeScreen extends StatelessWidget {
         return ListView(children: <Widget>[
             textHomeScreen("TOP COUNTRIES", sizeFont: 25, bold: true),
             Row(children: topPlaces(rankingByCountry(), context)),
+
             Divider(color: Colors.grey),
+
             textHomeScreen("TOP CITIES", sizeFont: 25, bold: true),
             Container(child: Row(children: topPlaces(rankingByCity(), context))),
+
+            Divider(color: Colors.grey),
         ]);
     }
 
@@ -47,11 +51,10 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                         padding: EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Colors.black,
-                                width: 1,
+                            border: Border(
+                                right: BorderSide(color: Colors.black),
+                                left: BorderSide(color: Colors.black),
                             ),
-                            borderRadius: BorderRadius.circular(16),
                         ),
                         child: placeColumn(item),
                     ),
@@ -80,7 +83,7 @@ class HomeScreen extends StatelessWidget {
         );
     }
 
-    Text textHomeScreen(String str, {double sizeFont = 15, bool bold = false}) {
+    Text textHomeScreen(String str, {double sizeFont = 15, bool bold = true}) {
         return Text(str,
             textAlign: TextAlign.center,
             style: TextStyle(

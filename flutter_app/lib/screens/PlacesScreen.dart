@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutterapp/commun/Auxiliar.dart';
+import 'package:flutterapp/commun/Constants.dart';
 import 'ScreenRankingPlaces.dart';
 
 class PlacesScreen extends StatelessWidget {
@@ -10,7 +11,10 @@ class PlacesScreen extends StatelessWidget {
     Widget build(BuildContext context) {
         return SafeArea(
             child: Scaffold(
-                body: optionsPlaces(context)
+                body: Container(
+                    decoration: gradientApp,
+                    child: optionsPlaces(context)
+                )
             )
         );
     }

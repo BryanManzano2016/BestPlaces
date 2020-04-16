@@ -9,12 +9,12 @@ enum Continent {
 }
 
 final kHintTextStyle = TextStyle(
-    color: Colors.white54,
+    color: Colors.black,
     fontFamily: 'OpenSans',
 );
 
 final kLabelStyle = TextStyle(
-    color: Colors.white,
+    color: Colors.black,
     fontWeight: FontWeight.bold,
     fontFamily: 'OpenSans',
 );
@@ -29,4 +29,12 @@ final kBoxDecorationStyle = BoxDecoration(
             offset: Offset(0, 2),
         ),
     ],
+);
+
+final gradientApp = BoxDecoration(
+    gradient: LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [Colors.blue, Colors.white]
+    )
 );
