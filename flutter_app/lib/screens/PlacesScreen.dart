@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutterapp/commun/Auxiliar.dart';
-
 import 'ScreenRankingPlaces.dart';
 
 class PlacesScreen extends StatelessWidget {
@@ -24,6 +23,7 @@ class PlacesScreen extends StatelessWidget {
     Widget optionsPlaces(BuildContext context) {
         Map size = sizeScreen(context, 5, 0);
         return ListView(
+            padding: EdgeInsets.all(10),
             children: <Widget>[
                 Container(
                     height: size['hg'] / 3,
@@ -35,7 +35,8 @@ class PlacesScreen extends StatelessWidget {
                                     goToScreenLess(context,
                                         ScreenRankingPlaces(placesby: 'countries'));
                                 },
-                                child: imageWithRadious("countries.jpg", 16)),
+                                child: imageWithRadious("countries.jpg", 16)
+                            ),
                             Container(
                                 width: size['wd'] / 2,
                                 decoration: BoxDecoration(
