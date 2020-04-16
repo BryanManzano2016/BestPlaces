@@ -1,19 +1,27 @@
 import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/commun/Auxiliar.dart';
+import 'package:flutterapp/commun/Constants.dart';
+import 'package:flutter/cupertino.dart';
 
-class ScreenRankingPlaces extends StatelessWidget {
+class CountryInformation extends StatelessWidget {
     final String placesby;
-    ScreenRankingPlaces({Key key, this.placesby}) : super(key: key);
+    CountryInformation({Key key, this.placesby}) : super(key: key);
     @override
     Widget build(BuildContext context) {
         return SafeArea(child:Scaffold(
-            body:  countryInfo(),
+            appBar: PreferredSize(
+                preferredSize: Size.fromHeight(40.0),
+                child: AppBar(
+                    leading: iconButtonBack(context)
+                )
+            ),
+            body: Container(decoration: gradientApp, child: _countryInfo()),
         ));
     }
 }
 
-class countryInfo extends StatelessWidget {
+class _countryInfo extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
 
