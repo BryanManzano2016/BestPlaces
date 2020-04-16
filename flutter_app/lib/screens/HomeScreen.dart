@@ -2,159 +2,95 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutterapp/commun/Auxiliar.dart';
+import 'package:flutterapp/commun/Constants.dart';
 import 'package:flutterapp/models/City.dart';
 import 'package:flutterapp/models/Country.dart';
 import 'package:flutterapp/models/Place.dart';
 
 class HomeScreen extends StatelessWidget {
+    static Map size;
     HomeScreen({Key key}) : super(key: key);
 
     @override
     Widget build(BuildContext context) {
+        size = sizeScreen(context, 8, 8);
         return SafeArea(
             child: Scaffold(
-                body: Padding(child: listComponents(context), padding: EdgeInsets.all(10)),
-                floatingActionButton: FloatingActionButton(
-                    tooltip: 'Add',
-                    child: Icon(Icons.add),
-                    onPressed: null,
-                ),
-            ));
+                body: Container(
+                    decoration: gradientApp,
+                    child: listComponents(context))
+            )
+        );
     }
 
+    // Items of ListView
     ListView listComponents(BuildContext context) {
         return ListView(children: <Widget>[
-            titleSection("Top 3 - Countries"),
-            Container(child: Row(children: topPlaces(rankingByCountry(), context))),
-            Divider(),
-            titleSection("Top 3 - Cities"),
+            textHomeScreen("TOP COUNTRIES", sizeFont: 25, bold: true),
+            Row(children: topPlaces(rankingByCountry(), context)),
+
+            Divider(color: Colors.grey),
+
+            textHomeScreen("TOP CITIES", sizeFont: 25, bold: true),
             Container(child: Row(children: topPlaces(rankingByCity(), context))),
-            titleSection("Trend Country"),
-            titleSection("Trend city"),
+
+            Divider(color: Colors.grey),
         ]);
     }
 
     // Generic functions
+    // Items of row in listView
     List<Widget> topPlaces(List<Place> listFunc, BuildContext ctx) {
         List<Widget> items = [];
         listFunc.forEach((item) {
             items.add(Expanded(
-                child: Container(
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: Colors.blueGrey,
-                        border: Border.all(
-                            color: Colors.black,
-                            width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Column(
-                        children: <Widget>[
-                            FlatButton(onPressed: null, child: iconByCountries(item.pathImage)),
-                            titlePlaces(item.name),
-                            titlePlaces(item.rating.toString()),
-                            Container(
-                                width: 120,
-                                child: Row(
-                                    children: <Widget>[
-                                        Container(
-                                            width: 15,
-                                          child: IconButton(
-                                              iconSize: 15,
-                                              icon: Icon(Icons.star),
-                                              tooltip: 'Rating',
-                                              onPressed: null,
-                                          ),
-                                        ),
-                                        Container(
-                                            width: 15,
-                                          child: IconButton(
-                                              iconSize: 15,
-                                              icon: Icon(Icons.star),
-                                              tooltip: 'Rating',
-                                              onPressed: null,
-                                          ),
-                                        ),
-                                        Container(
-                                            width: 15,
-                                            child: IconButton(
-                                                iconSize: 15,
-                                                icon: Icon(Icons.star),
-                                                tooltip: 'Rating',
-                                                onPressed: null,
-                                            ),
-                                        ),
-                                        Container(
-                                            width: 15,
-                                            child: IconButton(
-                                                iconSize: 15,
-                                                icon: Icon(Icons.star),
-                                                tooltip: 'Rating',
-                                                onPressed: null,
-                                            ),
-                                        ),
-                                        Container(
-                                            width: 15,
-                                            child: IconButton(
-                                                iconSize: 15,
-                                                icon: Icon(Icons.star),
-                                                tooltip: 'Rating',
-                                                onPressed: null,
-                                            ),
-                                        )
-                                    ],
-                                ),
+                child: GestureDetector(
+                    onTap: (){
+                        print('Go to screen for place ${item.name}');
+                    },
+                    child: Container(
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                            border: Border(
+                                right: BorderSide(color: Colors.black),
+                                left: BorderSide(color: Colors.black),
                             ),
-                        ],
+                        ),
+                        child: placeColumn(item),
                     ),
                 ),
-            ));
+            ),
+            );
         });
         return items;
     }
 
-    Text titleSection(String str) {
+    Column placeColumn(Place place) {
+        return Column(
+            children: <Widget>[
+                textHomeScreen(place.name, bold: true, sizeFont: 20),
+                FlatButton(onPressed: null, child: iconByCountries(place.pathImage)),
+                Container(
+                    child: ListTile(
+                        trailing: textHomeScreen(place.rating.toString() + "/10"),
+                        title: IconButton(
+                            icon: Icon(Icons.star, color: Colors.yellow),
+                            onPressed: null,
+                        ),
+                    ),
+                ),
+            ],
+        );
+    }
+
+    Text textHomeScreen(String str, {double sizeFont = 15, bool bold = true}) {
         return Text(str,
             textAlign: TextAlign.center,
             style: TextStyle(
+                fontWeight: (bold ? FontWeight.bold : FontWeight.normal),
                 color: Colors.black,
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
+                fontSize: sizeFont,
                 fontFamily: 'OpenSans'));
-    }
-
-    Text titlePlaces(String str) {
-        return Text(str,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.white, fontSize: 14, fontFamily: 'OpenSans'));
-    }
-
-    List<Widget> starsOfPlaces(num rating) {
-        List<Widget> stars = [];
-        var count = 0;
-        if(0 < rating && rating <= 1){
-            count = 1;
-        } else if(1 < rating && rating <= 2){
-            count = 2;
-        } else if(2 < rating && rating <= 3){
-            count = 3;
-        } else if(3 < rating && rating <= 4){
-            count = 4;
-        } else if(4 < rating && rating <= 5){
-            count = 5;
-        }
-        for(var i = 0; i < count; i++){
-            stars.add(
-                IconButton(
-                    icon: Icon(Icons.star),
-                    tooltip: 'Rating',
-                    onPressed: null,
-                )
-            );
-        }
-        return stars;
     }
 
     // Async methods
@@ -162,7 +98,7 @@ class HomeScreen extends StatelessWidget {
         return [
             Country('1', 'Brazil', 4.8, 'brazil.png'),
             Country('2', 'Mexico', 3, 'mexico.png'),
-            Country('3', 'Spain', 3.8, 'spain.png')
+            Country('3', 'Spain', 3.8, 'spain.png'),
         ];
     }
 

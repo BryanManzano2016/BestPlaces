@@ -1,6 +1,7 @@
 import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/commun/Auxiliar.dart';
+import 'package:flutterapp/commun/Constants.dart';
 
 class ScreenRankingPlaces extends StatelessWidget {
     final String placesby;
@@ -8,131 +9,161 @@ class ScreenRankingPlaces extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return SafeArea(child:Scaffold(
-            body:  countryInfo(),
+            appBar: PreferredSize(
+            preferredSize: Size.fromHeight(40.0),
+            child: AppBar(
+                leading: iconButtonBack(context)
+            )
+        ),
+            body: Container(decoration: gradientApp, child: RankingList()),
         ));
     }
 }
 
-class countryInfo extends StatelessWidget {
+class _CountryDescription extends StatelessWidget {
+    _CountryDescription({
+        Key key,
+        this.country,
+        this.rating,
+        this.votes,
+    }) : super(key: key);
+
+    final String country;
+    final double rating;
+    final int votes;
+
     @override
     Widget build(BuildContext context) {
+        return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+                Container(
+                    child: Expanded(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                                Text(
+                                    '$country',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold,
+                                    ),
 
-        final countryImg = Container(
-            width: 190,
-            height: 190,
-            padding: const EdgeInsets.all(8.0),
-            decoration: new BoxDecoration(
-                //shape: BoxShape.circle,
-                image: new DecorationImage(
-                    fit: BoxFit.fill,
-                    image: ExactAssetImage('assets/images/Ecuador.png'),
-                )
-            ),
-        );
+                                ),
 
-        
-        final countryName = Container(
-            padding: EdgeInsets.only(top: 15, bottom: 10),
-            child: Text(
-                'ECUADOR',
-                style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
-            ),
-        );
-        
+                                Divider(color: Colors.blue,),
 
-        final description = Container(
-            padding: EdgeInsets.only(top: 10, bottom: 10),
-            child: Text(
-                'Ecuador es un país que se extiende por el ecuador en la costa oeste de Sudamérica. Sus diversos paisajes abarcan '
-                    'la selva del Amazonas, las zonas altas andinas y las islas Galápagos de abundante fauna.',
-                style: TextStyle(fontSize: 18.0, ),
-            ),
-        );
+                                Text(
+                                    'RATING: $rating',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        fontSize: 15.0,
+                                        //color: Colors.black54,
 
+                                    ),
+                                ),
+                                Text(
+                                    'VOTOS: $votes',
+                                    style: const TextStyle(
+                                        fontSize: 15.0,
+                                        color: Colors.black87,
 
-        final countryData = Container(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                    Container(
-                        padding: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Text(
-                          'Continente: America',
-                          style: TextStyle(fontSize: 18.0 ),
-                      ),
-                    ),
+                                    ),
+                                ),
 
-                    Container(
-                        padding: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Text(
-                          'Poblacion: 100000',
-                          style: TextStyle(fontSize: 18.0 ),
-                      ),
-                    ),
-
-                    Container(
-                        padding: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Text(
-                          'Clima: 30 grados',
-                          style: TextStyle(fontSize: 18.0 ),
-                      ),
-                    ),
-
-                ],
-            ),
-        );
-
-
-        Column _buildButtonColumn(IconData icon, String label) {
-            return Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                    Icon(icon, color: Colors.green[500], size: 30,),
-                    Container(
-                        child: Text(
-                            label,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w800,
-                                fontFamily: 'Roboto',
-                                letterSpacing: 0.5,
-                                fontSize: 18,
-                                height: 2,
-                            ),
+                            ],
                         ),
                     ),
-                ],
-            );
-        }
+                ),
 
-
-        final buttonSection = Container(
-
-            padding: EdgeInsets.only(top: 40),
-
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                    _buildButtonColumn(Icons.star, '7/10'),
-                    _buildButtonColumn(Icons.star_border, 'Rate'),
-                    _buildButtonColumn(Icons.comment, 'Reviews'),
-                ],
-            ),
-        );
-
-
-
-        return ListView(
-            padding: EdgeInsets.all(10),
-            children: <Widget>[
-                countryImg,
-                countryName,
-                description,
-                countryData,
-                buttonSection,
             ],
         );
     }
+}
 
+class CustomList extends StatelessWidget {
+    CustomList({
+        Key key,
+        this.thumbnail,
+        this.country,
+        this.rating,
+        this.votes,
+    }) : super(key: key);
+
+    final Widget thumbnail;
+    final String country;
+    final double rating;
+    final int votes;
+
+    @override
+    Widget build(BuildContext context) {
+        return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: SizedBox(
+                height: 80,
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                        AspectRatio(
+                            aspectRatio: 1.2,
+                            child: thumbnail,
+                        ),
+                        Expanded(
+                            child: Padding(
+                                padding: const EdgeInsets.fromLTRB(20.0, 0.0, 2.0, 0.0),
+                                child: _CountryDescription(
+                                    country: country,
+                                    rating: rating,
+                                    votes: votes,
+                                ),
+                            ),
+                        )
+                    ],
+                ),
+            ),
+        );
+    }
+}
+
+class RankingList extends StatelessWidget {
+    RankingList({Key key}) : super(key: key);
+
+    @override
+    Widget build(BuildContext context) {
+        return ListView(
+            padding: const EdgeInsets.all(10.0),
+            children: <Widget>[
+                CustomList(
+                    thumbnail: Container(
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: ExactAssetImage('assets/images/Ecuador.png'),
+                                fit: BoxFit.fitHeight,
+                            )
+                        ),
+                    ),
+                    country: '1. ECUADOR',
+                    rating: 5.8,
+                    votes: 500,
+                ),
+                CustomList(
+                    thumbnail: Container(
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: ExactAssetImage('assets/images/Argentina.png'),
+                                fit: BoxFit.fitHeight,
+                            )
+
+                        ),
+                    ),
+                    country: '2. ARGENTINA',
+                    rating: 5.8,
+                    votes: 500,
+                ),
+            ],
+        );
+    }
 }

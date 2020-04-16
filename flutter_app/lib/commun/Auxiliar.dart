@@ -17,7 +17,7 @@ Widget imageWithRadious(String pathImage, double radious){
 Widget iconByCountries(String pathImage){
     return ClipRRect(
         borderRadius: BorderRadius.circular(16),
-        child: Image.asset('assets/countries/$pathImage', width: 40, height: 40),
+        child: Image.asset('assets/countries/$pathImage'),
     );
 }
 

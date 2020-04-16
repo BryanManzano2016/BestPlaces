@@ -6,21 +6,35 @@ import 'screens/HomeScreen.dart';
 import 'screens/PlacesScreen.dart';
 
 void main() {
-    WidgetsFlutterBinding.ensureInitialized();
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-        .then((_) {
+    startApp(darkMode: false, horizontalMode: true);
+}
+
+void startApp({bool horizontalMode = false, bool darkMode = false}){
+    final Brightness darkBool = (darkMode ? Brightness.dark : Brightness.light);
+    final ThemeData themeValue = ThemeData( brightness: darkBool,
+        primarySwatch: Colors.blue);
+    final ThemeData darkThemeValue = ThemeData(brightness: darkBool,
+        primarySwatch: Colors.blue);
+
+    if(!horizontalMode){
+        WidgetsFlutterBinding.ensureInitialized();
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+            .then((_) {
+            runApp(MaterialApp(
+                theme: themeValue,
+                darkTheme: darkThemeValue,
+                debugShowCheckedModeBanner: false,
+                home: MainScreen(),
+            ));
+        });
+    } else {
         runApp(MaterialApp(
-            theme: ThemeData(
-                brightness: Brightness.light,
-                primarySwatch: Colors.blue,
-            ),
-            /*
-            darkTheme: ThemeData(brightness: Brightness.dark, primarySwatch: Colors.blue),
-            */
+            theme: themeValue,
+            darkTheme: darkThemeValue,
             debugShowCheckedModeBanner: false,
             home: MainScreen(),
         ));
-    });
+    }
 }
 
 class MainScreen extends StatelessWidget {

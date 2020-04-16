@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutterapp/commun/Auxiliar.dart';
+import 'package:flutterapp/commun/Constants.dart';
 import 'ScreenRankingPlaces.dart';
 
 class PlacesScreen extends StatelessWidget {
@@ -10,12 +11,10 @@ class PlacesScreen extends StatelessWidget {
     Widget build(BuildContext context) {
         return SafeArea(
             child: Scaffold(
-                body: optionsPlaces(context),
-                floatingActionButton: FloatingActionButton(
-                    tooltip: 'Add',
-                    child: Icon(Icons.access_time),
-                    onPressed: null,
-                ),
+                body: Container(
+                    decoration: gradientApp,
+                    child: optionsPlaces(context)
+                )
             )
         );
     }
@@ -25,68 +24,47 @@ class PlacesScreen extends StatelessWidget {
         return ListView(
             padding: EdgeInsets.all(10),
             children: <Widget>[
-                Container(
-                    height: size['hg'] / 3,
-                    child: Stack(
-                        alignment: const Alignment(0, 1),
-                        children: [
-                            FlatButton(
-                                onPressed: () {
-                                    goToScreenLess(context,
-                                        ScreenRankingPlaces(placesby: 'countries'));
-                                },
-                                child: imageWithRadious("countries.jpg", 16)
-                            ),
-                            Container(
-                                width: size['wd'] / 2,
-                                decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(16)),
-                                child: Text(
-                                    'COUNTRIES',
-                                    style: TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                ),
-                            ),
-                        ],
-                    )),
-                Divider(color: Colors.white),
-                Container(
-                    height: size['hg'] / 3,
-                    child: Stack(
-                        textDirection: TextDirection.rtl,
-                        alignment: const Alignment(0, 1),
-                        children: [
-                            FlatButton(
-                                onPressed: () {
-                                    goToScreenLess(context,
-                                        ScreenRankingPlaces(placesby: 'cities'));
-                                },
-                                child: imageWithRadious('cities.jpg', 16)),
-                            Container(
-                                width: size['wd'] / 2,
-                                decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(16)),
-                                child: Text(
-                                    'CITIES',
-                                    style: TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                ),
-                            ),
-                        ],
-                    )
-                ),
+                containerTypePlace(context, "countries", size['hg']/3, 'countries.jpg'),
+                Divider(color: Colors.grey),
+                containerTypePlace(context, "cities", size['hg']/3, 'cities.jpg'),
                 Divider(color: Colors.white),
             ],
+        );
+    }
+
+    Widget containerTypePlace(BuildContext context, String title, double heightField,
+            String pathImage){
+        return Container(
+            height: heightField,
+            child: Stack(
+                alignment: const Alignment(0, 1),
+                children: [
+                    FlatButton(
+                        onPressed: () {
+                            goToScreenLess(context,
+                                ScreenRankingPlaces(placesby: title));
+                        },
+                        child: imageWithRadious(pathImage, 16)
+                    ),
+                    Container(
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(4)),
+                        child: textTitleOption(title.toUpperCase()),
+                    ),
+                ],
+            ));
+    }
+
+    Text textTitleOption(String text){
+        return Text(
+            text,
+            style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
         );
     }
 }

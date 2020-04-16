@@ -204,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextSpan(
                             text: 'Don\'t have an Account? ',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 18.0,
                                 fontWeight: FontWeight.w400,
                             ),
@@ -212,7 +212,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextSpan(
                             text: 'Sign Up',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 18.0,
                                 fontWeight: FontWeight.bold,
                             ),
@@ -242,9 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Container(
                                     height: double.infinity,
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
-                                        color: Colors.blue,
-                                    ),
+                                    decoration: gradientApp,
                                 ),
                                 Container(
                                     height: double.infinity,
@@ -260,7 +258,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 Text(
                                                     'SIGN IN',
                                                     style: TextStyle(
-                                                        color: Colors.white,
+                                                        color: Colors.black,
                                                         fontFamily: 'OpenSans',
                                                         fontSize: 20.0,
                                                         fontWeight: FontWeight.bold,
