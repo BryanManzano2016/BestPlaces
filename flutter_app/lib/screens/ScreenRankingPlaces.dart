@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/commun/Auxiliar.dart';
 import 'package:flutterapp/commun/Constants.dart';
+import 'package:flutterapp/screens/CountryInformation.dart';
+
 
 class ScreenRankingPlaces extends StatelessWidget {
     final String placesby;
@@ -136,19 +138,34 @@ class RankingList extends StatelessWidget {
         return ListView(
             padding: const EdgeInsets.all(10.0),
             children: <Widget>[
-                CustomList(
-                    thumbnail: Container(
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image: ExactAssetImage('assets/images/Ecuador.png'),
-                                fit: BoxFit.fitHeight,
-                            )
+
+                GestureDetector(
+                    onTap: (){
+                        Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => CountryInformation()
+                            ),
+                        );
+                    },
+
+
+                    child: CustomList(
+                        thumbnail: Container(
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: ExactAssetImage('assets/images/Ecuador.png'),
+                                    fit: BoxFit.fitHeight,
+                                )
+                            ),
                         ),
+                        country: '1. ECUADOR',
+                        rating: 5.8,
+                        votes: 500,
                     ),
-                    country: '1. ECUADOR',
-                    rating: 5.8,
-                    votes: 500,
+
                 ),
+
+
                 CustomList(
                     thumbnail: Container(
                         decoration: const BoxDecoration(
