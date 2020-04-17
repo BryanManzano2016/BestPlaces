@@ -26,15 +26,18 @@ class HomeScreen extends StatelessWidget {
     // Items of ListView
     ListView listComponents(BuildContext context) {
         return ListView(children: <Widget>[
+
             textHomeScreen("TOP COUNTRIES", sizeFont: 25, bold: true),
+            Divider(color: Colors.transparent, height: 10,),
             Row(children: topPlaces(rankingByCountry(), context)),
 
-            Divider(color: Colors.grey),
+            Divider(color: Colors.transparent, height: 20,),
 
             textHomeScreen("TOP CITIES", sizeFont: 25, bold: true),
+            Divider(color: Colors.transparent, height: 10,),
             Container(child: Row(children: topPlaces(rankingByCity(), context))),
 
-            Divider(color: Colors.grey),
+            Divider(color: Colors.transparent, height: 20,),
         ]);
     }
 
